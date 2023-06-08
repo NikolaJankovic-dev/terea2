@@ -7,13 +7,17 @@ import Right from "../components/Right";
 import Wheel from "../components/Wheel";
 import on from "../assets/images/sound/on.webp";
 import off from "../assets/images/sound/off.webp";
-import { Fab } from "@mui/material";
+import { Box, Fab, Typography } from "@mui/material";
 import {
   ArrowDownward,
   ArrowUpward,
+  Key,
   KeyboardArrowDown,
+  KeyboardArrowRight,
   KeyboardArrowUp,
 } from "@mui/icons-material";
+import heets from "../assets/images/names/heets.png";
+import terea from "../assets/images/names/terea.png";
 
 const Terrea = ({
   isLandscape,
@@ -44,6 +48,7 @@ const Terrea = ({
     "TIRQUOISE",
     "WILLOW",
     "MAUVE",
+    "MAUVE",
   ];
 
   const colors = [
@@ -56,9 +61,9 @@ const Terrea = ({
     "#BCBFBE",
     "#1F8E92",
     "#77A01B",
-    "#A8A8A8",
+    "#6A6584",
+    "#6A6584",
   ];
-
 
   const namesForRight = [
     "AMBER ",
@@ -74,15 +79,15 @@ const Terrea = ({
   ];
 
   const colorsForRight = [
-    "#C69500",
+    "#AE681B",
     "#8C5F33",
     "#77A01B",
-    "#AE681B",
+    "#C69500",
     "#1F8E92",
     "#603E5C",
     "#872323",
     "#BCBFBE",
-    "#A8A8A8",
+    "#6A6584",
     "#A76846",
   ];
 
@@ -90,50 +95,69 @@ const Terrea = ({
 
   const [rightText, setRightText] = useState(namesForRight[0]);
 
+  const [index, setIndex] = useState(0);
+
+  const [stopped, setStopped] = useState(false);
+
   useEffect(() => {
     setLeftText(names[phase]);
   }, [phase]);
 
   useEffect(() => {
-    setRightText(namesForRight[tapped]);
-  }, [tapped]);
+    setRightText(namesForRight[index]);
+  }, [index]);
+
+  const straightPacks = [0, 9, 22, 34, 47, 57, 69, 83, 97, 109];
+
+  const [direction, setDirection] = useState(1);
+  const [debounceTimer, setDebounceTimer] = useState(null);
 
   const handleIncrement = () => {
-    if (tapped === 10) {
-      setTapped(0);
-      // setTouchEnd(false);
-      // setSound(!sound);
+    clearTimeout(debounceTimer);
+    if (index === straightPacks.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex((prevIndex) => prevIndex + 1);
     }
-    setTapped((tapped) => tapped + 1);
-    setTouchEnd(false);
-    setTimeout(() => {
-      setTouchEnd(true);
-    }, 1000);
+    setDirection(
+      (straightPacks[(index + 1) % straightPacks.length] - right + 118) % 118 <=
+        59
+        ? 1
+        : -1
+    );
+    const timer = setTimeout(() => {
+      check();
+    }, 1500);
+    setDebounceTimer(timer);
   };
 
   const handleDecrement = () => {
-    if (tapped === 0) {
-      setTapped(10);
-      //   // setSound(!sound);
+    clearTimeout(debounceTimer);
+    if (index === 0) {
+      setIndex(straightPacks.length - 1);
+    } else {
+      setIndex((prevIndex) => prevIndex - 1);
     }
-    setTapped((tapped) => tapped - 1);
-    setTouchEnd(false);
-    setTimeout(() => {
-      setTouchEnd(true);
-    }, 1000);
+    setDirection(
+      (straightPacks[
+        (index - 1 + straightPacks.length) % straightPacks.length
+      ] -
+        right +
+        118) %
+        118 <=
+        59
+        ? 1
+        : -1
+    );
+    const timer = setTimeout(() => {
+      check();
+    }, 1500);
+    setDebounceTimer(timer);
   };
 
-  // useEffect(() => {
-  //   // Napravimo pretpostavku da 1 tap = 10 stepeni rotacije.
-  //   // Ako želite drugačiji odnos, samo promenite ovaj broj.
-  //   setRight((tapped * 1) % 360);
-  // }, [tapped]);
-
-  // Create refs
   const rightRef = useRef(right);
   const phaseRef = useRef(phase);
 
-  // Update refs whenever 'right' and 'phase' change
   useEffect(() => {
     rightRef.current = right;
   }, [right]);
@@ -259,8 +283,14 @@ const Terrea = ({
     console.log(phase);
   };
 
+  // useEffect(() => {
+  //   if (stopped) {
+  //     check();
+  //   }
+  // }, [stopped]);
+
   const handleMouseUp = () => {
-    // check();
+    check();
     // console.log(phase);
   };
 
@@ -313,14 +343,8 @@ const Terrea = ({
 
   const [touchEnd, setTouchEnd] = useState(false);
 
-  // useEffect(() => {
-  //   if (touchEnd) {
-  //     check();
-  //   }
-  // }, [touchEnd]);
-
   return (
-    <div
+    <Box
       style={{
         position: "relative",
         width: "100vw",
@@ -348,118 +372,185 @@ const Terrea = ({
         alt="sound"
         onPointerDown={() => setSound(!sound)}
       />
-      <div
+      <Box
         style={{
           position: "absolute",
-          top: isLandscape ? "20%" : "0%",
+          top: isLandscape ? "50%" : "10%",
           left: isLandscape ? "50%" : "0%",
           transform: isLandscape
             ? "translate(-50%, -50%)"
-            : "translate(5vw, 10vw)",
+            : "translate(10vw, 1vw)",
           display: "flex",
-          gap: "5vw",
+          flexDirection: isLandscape ? "row" : "column",
+          gap: "1vw",
         }}
       >
-        <div
-          style={{
-            width: "15vw",
-            paddingBlock: "1vw",
-            backgroundColor: colors[phase],
-            borderRadius: "1vw",
-            fontSize: "2vw",
-            boxShadow: " inset -1px 1px 1px 1px black",
-            textAlign: "center",
-            color: "white",
-            textShadow: "0 0 1px black",
-            transition: "all 0.5s ease",
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: isLandscape ? "1vw" : "1.5vw",
+            alignItems: "center",
           }}
         >
-          {leftText}
-        </div>
-        <div
-          style={{
-            width: "15vw",
-            paddingBlock: "1vw",
-            backgroundColor: colorsForRight[tapped],
-            borderRadius: "1vw",
-            fontSize: "2vw",
-            boxShadow: " inset -1px 1px 1px 1px black",
-            textAlign: "center",
-            color: "white",
-            textShadow: "0 0 1px black",
-            transition: "all 0.5s ease",
+          <Box>
+            <img
+              src={heets}
+              alt="heets"
+              style={{ height: isLandscape ? "2.9vh" : "2vh" }}
+            />
+          </Box>
+          <Box
+            style={{
+              width: isLandscape ? "12vw" : "30vw",
+              paddingBlock: isLandscape ? "0.8vw" : "2vw",
+              backgroundColor: colors[phase],
+              borderRadius: "10px",
+              fontSize: "1.5vw",
+              boxShadow: " inset -1px 1px 10px 1px rgba(0,0,0,0.5)",
+              textAlign: "center",
+              color: "white",
+              textShadow: "0 0 1px black",
+              transition: "all 0.5s ease",
+              fontWeight: "bold",
+            }}
+          >
+            <Typography sx={{ fontWeight: "bold" }}> {leftText} </Typography>
+          </Box>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            alignItems: "center",
           }}
         >
-          {rightText}
-        </div>
-      </div>
-      <div
+          <Box />
+          {isLandscape ? (
+            <KeyboardArrowRight
+              sx={{
+                color: "#1BDAC1",
+                fontSize: "3vw",
+              
+              }}
+              // fontSize= "small"
+            />
+          ) : (
+            <KeyboardArrowDown
+              sx={{
+                color: "#1BDAC1",
+                fontSize: "14vw",
+              }}
+              // fontSize="large"
+            />
+          )}
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            gap: isLandscape ? "1vw" : "1.5vw",
+            alignItems: "center",
+          }}
+        >
+          <Box>
+            <img
+              src={terea}
+              alt="terea"
+              style={{ height: isLandscape ? "3vh" : "2vh" }}
+            />
+          </Box>
+          <Box
+            sx={{
+              width: isLandscape ? "12vw" : "30vw",
+              paddingBlock: isLandscape ? "0.8vw" : "2vw",
+              backgroundColor: colorsForRight[index],
+              borderRadius: "10px",
+              fontSize: "1.5vw",
+              boxShadow: " inset -1px 1px 10px 1px rgba(0,0,0,0.5)",
+              textAlign: "center",
+              color: "white",
+              textShadow: "0 0 1px black",
+              transition: "all 0.5s ease",
+              fontWeight: "bold",
+            }}
+          >
+            <Typography sx={{ color: "white", fontWeight: "bold" }}>
+              {rightText}
+            </Typography>
+            {/* {rightText} */}
+          </Box>
+        </Box>
+      </Box>
+      <Box
         style={{
           position: "absolute",
-          top: isLandscape ? "40%" : "0%",
-          left: isLandscape ? "50%" : "0%",
+          top: isLandscape ? "80%" : "68%",
+          left: isLandscape ? "50%" : "70%",
           transform: isLandscape
             ? "translate(-50%, -50%)"
             : "translate(5vw, 10vw)",
           display: "flex",
           flexFlow: "column",
-          gap: "5vw",
+          gap: isLandscape ? "2vw" : "8vw",
           zIndex: 100,
         }}
       >
         <Fab
-          // style={{
-          //   width: "15vw",
-          //   paddingBlock: "1vw",
-          //   backgroundColor: "white",
-          //   borderRadius: "1vw",
-          //   fontSize: "2vw",
-          //   boxShadow: " inset -1px 1px 1px 1px black",
-          //   textAlign: "center",
-          //   color: "white",
-          //   textShadow: "0 0 1px black",
-          // }}
           sx={{
             color: "white",
             backgroundColor: "#1BDAC1",
             "&:focus": {
               backgroundColor: "#1BDAC1",
             },
+            "&:hover": {
+              backgroundColor: "#1BDAC199",
+            },
+            height: isLandscape ? "4vw" : "20vw",
+            width: isLandscape ? "4vw" : "20vw",
           }}
-          onPointerDown={handleDecrement}
+          onPointerDown={handleIncrement}
+          size="large"
         >
-          <KeyboardArrowUp />
+          <KeyboardArrowUp sx={{
+            fontSize: isLandscape ? "3vw" : "16vw"
+          }} />
         </Fab>
         <Fab
-          // style={{
-          //   width: "15vw",
-          //   paddingBlock: "1vw",
-          //   backgroundColor: "white",
-          //   borderRadius: "1vw",
-          //   fontSize: "2vw",
-          //   boxShadow: " inset -1px 1px 1px 1px black",
-          //   textAlign: "center",
-          //   color: "white",
-          //   textShadow: "0 0 1px black",
-          // }}
-          onPointerDown={handleIncrement}
+          onPointerDown={handleDecrement}
           sx={{
             color: "white",
             backgroundColor: "#1BDAC1",
             "&:focus": {
               backgroundColor: "#1BDAC1",
             },
+            "&:hover": {
+              backgroundColor: "#1BDAC199",
+
+            },
+            height: isLandscape ? "4vw" : "20vw",
+            width: isLandscape ? "4vw" : "20vw",
           }}
         >
-          <KeyboardArrowDown />
+          <KeyboardArrowDown sx={{
+            fontSize: isLandscape ? "3vw" : "16vw"
+          }} />
         </Fab>
-      </div>
-      {correct > 0 && <Correct correct={correct} setCorrect={setCorrect} />}
+      </Box>
+      {correct > 0 && (
+        <Correct
+          correct={correct}
+          setCorrect={setCorrect}
+          isLandscape={isLandscape}
+        />
+      )}
       {incorrect > 0 && (
         <Incorrect
           incorrect={incorrect}
           setIncorrect={setIncorrect}
           check={check}
+          isLandscape={isLandscape}
         />
       )}
       <Left
@@ -467,7 +558,6 @@ const Terrea = ({
         isLandscape={isLandscape}
         setLeftImagesLoaded={setLeftImagesLoaded}
       />
-      {/* {images && ( */}
       <Right
         right={right}
         setRight={setRight}
@@ -476,61 +566,15 @@ const Terrea = ({
         handleTouchMove={handleTouchMove}
         setRightImagesLoaded={setRightImagesLoaded}
         handleTouchEnd={() => {
-          // console.log("touch end");
           check();
         }}
         touchEnd={touchEnd}
         setTouchEnd={setTouchEnd}
         tapped={tapped}
+        index={index}
+        direction={direction}
       />
-      {/* )} */}
-      <div
-        style={{
-          position: "relative",
-          width: "100vw",
-          height: "100vh",
-          overflow: "hidden",
-        }}
-        onMouseMove={handleMouseMove}
-        onMouseUp={() => setTouchEnd(true)}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleMouseUp}
-      >
-        <div
-          style={{
-            width: isLandscape ? "25vh" : "25vw",
-            height: isLandscape ? "25vh" : "25vw",
-            position: "absolute",
-            right: isLandscape ? "50%" : "16%",
-            bottom: isLandscape ? "0%" : "5%",
-            transform: "translate(50%, -55%)",
-            zIndex: "100",
-            borderRadius: "50%",
-          }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-        >
-          {/* {isLandscape && (
-            <>
-              {" "}
-              <Wheel rotation={rotation} isLandscape={isLandscape} />
-              <p
-                style={{
-                  position: "absolute",
-                  bottom: "0",
-                  left: "50%",
-                  transform: "translate(-50%, 100%)",
-                  padding: "20px",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                Rotate the wheel
-              </p>
-            </>
-          )} */}
-        </div>
-      </div>
-    </div>
+    </Box>
   );
 };
 

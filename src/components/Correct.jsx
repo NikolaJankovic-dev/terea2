@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import tacno from "../ImagesExport/tacno";
 
-const Correct = ({ correct, setCorrect }) => {
+const Correct = ({ correct, setCorrect, isLandscape }) => {
   const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
   const [animationDone, setAnimationDone] = useState(false); // new state to track if animation is done
   const [images, setImages] = useState([]);
@@ -54,7 +54,7 @@ const Correct = ({ correct, setCorrect }) => {
       alt="tacno"
       style={{
         position: "absolute",
-        top: "50%",
+        top: isLandscape ? "34%" : "50%",
         left: "50%",
         transform: "translate(-50%, -70%)",
         maxBlockSize: "30vh",

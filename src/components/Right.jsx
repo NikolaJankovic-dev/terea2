@@ -6,19 +6,19 @@ const Right = ({
   right,
   setRight,
   isLandscape,
-  handleTouchStart,
-  handleTouchMove,
   handleTouchEnd,
   touchEnd,
   setTouchEnd,
   setRightImagesLoaded,
   tapped,
   check,
+  index,
+  direction
 }) => {
   const [images, setImages] = useState(desna);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const straightPacks = [0, 9, 22, 34, 47, 57, 69, 83, 97, 109, 117];
+  const straightPacks = [0, 9, 22, 34, 47, 57, 69, 83, 97, 109];
 
   function findClosestNumber(arr, num) {
     let closest = arr[0];
@@ -35,51 +35,27 @@ const Right = ({
     return closest;
   }
 
-  // useEffect(() => {
-  //   const closestNumber = findClosestNumber(straightPacks, right);
-  //   // now you can do something with closestNumber
-  //   if (!touchEnd) return;
-  //   const interval = setInterval(() => {
-  //     if (right > closestNumber) {
-  //       setRight(right - 1);
-  //     } else if (right < closestNumber) {
-  //       setRight(right + 1);
-  //     } else {
-  //       clearInterval(interval);
-  //       handleTouchEnd();
-  //     }
-  //   }, 100);
-  //   return () => clearInterval(interval);
-  // }, [touchEnd, right]);
+  const timerRef = useRef(null);
 
   useEffect(() => {
-    const closestNumber = findClosestNumber(
-      straightPacks,
-      straightPacks[tapped]
-    );
-    // now you can do something with closestNumber
-    // if (!touchEnd) return;
-    if (right === 0 && closestNumber > 100) {
-      setRight(117);
-    }
-    if (right === 117 && closestNumber < 100) {
-      setRight(0);
-    }
+    const target = straightPacks[index];
     const interval = setInterval(() => {
-      if (right > closestNumber) {
-        setRight((prevRight) => prevRight - 1);
-      } else if (right < closestNumber) {
-        setRight((prevRight) => prevRight + 1);
-      } else {
-        clearInterval(interval);
-        setTimeout(() => {
-          handleTouchEnd();
-        }, 1000);
-      }
+      setRight((prevRight) => {
+        let newRight = prevRight + direction;
+        if (newRight >= 118) {
+          newRight = 0;
+        }
+        if (newRight < 0) {
+          newRight = 117;
+        }
+        if (newRight === target) {
+          clearInterval(interval);
+        }
+        return newRight;
+      });
     }, 50);
-    console.log("tapped", closestNumber, right);
     return () => clearInterval(interval);
-  }, [tapped, right]);
+  }, [index, direction]);
 
   useEffect(() => {
     const imagesToLoad = isLandscape ? desna : desna9x16;
@@ -105,7 +81,6 @@ const Right = ({
     }
   }, [imagesLoaded, right]);
 
-  // if (!imagesLoaded) return null;
   return (
     <img
       ref={imgRef}
@@ -117,22 +92,6 @@ const Right = ({
         height: isLandscape ? "100vh" : "80vh",
         zIndex: "1",
       }}
-      // onTouchStart={(e) => {
-      //   handleTouchStart(e);
-      //   setTouchEnd(false);
-      //   console.log("touchstart");
-      // }}
-      // onTouchMove={(e) => {
-      //   handleTouchMove(e);
-      //   console.log("touchmove");
-      // }}
-      // onTouchEnd={() => {
-      //   // handleTouchEnd();
-      //   setTimeout(() => {
-      //     setTouchEnd(true);
-      //   }, 500);
-      //   console.log("touchend");
-      // }}
     />
   );
 };

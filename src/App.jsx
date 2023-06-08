@@ -3,6 +3,9 @@ import "./App.css";
 import Terrea from "./Terrea/Terrea";
 import HowTo from "./HowTo/HowTo";
 import Won from "./Won/Won";
+import HowToPlay from "./HowToPlay/HowToPlay";
+import { createTheme, ThemeProvider } from "@mui/material";
+import FirstScreen from "./components/FirstScreen/FirstScreen";
 
 function App() {
   const [isLandscape, setIsLandscape] = useState(
@@ -43,6 +46,12 @@ function App() {
     };
   }, []);
 
+  const theme = createTheme({
+    typography: {
+      fontFamily: "IQOS-Regular, IQOS-Light, sans-serif",
+    },
+  });
+
   return (
     <div
       className="App"
@@ -51,13 +60,16 @@ function App() {
         overflow: "hidden",
       }}
     >
-      <Terrea
-        isLandscape={isLandscape}
-        setWon={setWon}
-        setLeftImagesLoaded={setLeftImagesLoaded}
-        setRightImagesLoaded={setRightImagesLoaded}
-      />
-      {appPhase !== 5 && (
+      <ThemeProvider theme={theme}>
+        <Terrea
+          isLandscape={isLandscape}
+          setWon={setWon}
+          setLeftImagesLoaded={setLeftImagesLoaded}
+          setRightImagesLoaded={setRightImagesLoaded}
+        />
+        <HowToPlay isLandscape={isLandscape} appPhase={appPhase} />
+        <FirstScreen isLandscape={isLandscape} setAppPhase={setAppPhase} />
+        {/* {appPhase !== 5 && (
         <HowTo
           isLandscape={isLandscape}
           appPhase={appPhase}
@@ -65,8 +77,9 @@ function App() {
           setLeftImagesLoaded={setLeftImagesLoaded}
           setRightImagesLoaded={setRightImagesLoaded}
         />
-      )}
-      {won && <Won isLandscape={isLandscape} />}
+      )} */}
+       <Won isLandscape={isLandscape} won={won} />
+      </ThemeProvider>
     </div>
   );
 }

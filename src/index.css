@@ -1,6 +1,15 @@
 @font-face {
   font-family: "IQOS-Regular";
-  src: url("./assets/fonts/IQOS-Regular.ttf");
+  src: url("./assets/fonts/IQOS-Regular.woff2") format("woff2"),
+    url("./assets/fonts/IQOS-Regular.woff") format("woff"),
+    url("./assets/fonts/IQOS-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "IQOS-Light";
+  src: url("./assets/fonts/IQOS-Light.woff2") format("woff2"),
+    url("./assets/fonts/IQOS-Light.woff") format("woff"),
+    url("./assets/fonts/IQOS-Light.ttf") format("truetype");
 }
 
 * {
@@ -8,5 +17,5 @@
   padding: 0;
   margin: 0;
   user-select: none;
-  font-family: "IQOS-Regular";
+  font-family: "IQOS-Regular !important";
 }
