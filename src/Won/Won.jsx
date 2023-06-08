@@ -62,7 +62,7 @@ const Won = ({ isLandscape, won }) => {
               whiteSpace: "nowrap",
             }}
           >
-            Osvojili ste xx bodova.
+            Osvojili ste 200 bodova.
           </Typography>
           <Button
             style={{
@@ -77,7 +77,7 @@ const Won = ({ isLandscape, won }) => {
               whiteSpace: "nowrap",
             }}
           >
-            COLLECT POINTS
+            PREUZMI BODOVE
           </Button>
         </Box>
         <Box

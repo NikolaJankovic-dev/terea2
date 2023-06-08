@@ -45,37 +45,44 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
           zIndex: 100,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-around",
+          justifyContent: "space-evenly",
           alignItems: "center",
         }}
       >
         <Typography
           variant={isLandscape ? "h1" : "h3"}
-          sx={{ color: "white", textAlign: "center" }}
+          sx={{
+            color: "white",
+            textAlign: "center",
+            fontSize: isLandscape ? "4vw" : "8vw",
+          }}
         >
-          How to play:
+          UPUTE:
         </Typography>
         <Box
           sx={{
             display: "flex",
             justifyContent: "space-evenly",
             flexDirection: isLandscape ? "row" : "column",
-            alignItems: "center",
+            alignItems: "space-between",
             gap: "20px",
             width: "100vw",
             // mt: "10vh",
           }}
         >
           <Fade in={phase > 1} timeout={1000}>
-            <Box sx={{
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: isLandscape ? "column" : "row",
-                justifyContent: "space-evenly",
+                justifyContent: "space-between",
                 alignItems: "center",
                 // gap: "5vh",
                 gap: isLandscape ? "2vw" : "0vh",
-                width: !isLandscape ? "90vw" : "30vw",
-            }}>
+                width: !isLandscape ? "80vw" : "30vw",
+                marginInline: "auto",
+              }}
+            >
               <Typography
                 variant={isLandscape ? "h1" : "h3"}
                 sx={{
@@ -86,29 +93,30 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                Try and match 
-                TEREA packs 
-                with HEETS  packs.
+                UPARI TEREA I HEETS OKUSE
               </Typography>
               <img
                 src={isLandscape ? howToPlay01 : howToPlay01P}
                 alt="how to play 01"
                 style={{
-                  maxWidth: isLandscape ? "30vw" : "80vw",
+                  maxWidth: isLandscape ? "30vw" : "50%",
                 }}
               />
             </Box>
           </Fade>
           <Fade in={phase > 2} timeout={1000}>
-          <Box sx={{
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: isLandscape ? "column" : "row-reverse",
-                justifyContent: "space-evenly",
+                justifyContent: "space-between",
                 alignItems: "center",
                 gap: isLandscape ? "2vw" : "0vh",
 
-                width: !isLandscape ? "90vw" : "30vw",
-            }}>
+                width: !isLandscape ? "80vw" : "30vw",
+                marginInline: "auto",
+              }}
+            >
               <Typography
                 variant={isLandscape ? "h1" : "h3"}
                 sx={{
@@ -119,27 +127,30 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-           Use arrow  buttons to move  TEREA packs.
+                ODABERI TEREA KUTIJICU KORIŠTENJEM STRELICA
               </Typography>
-            <img
-              src={isLandscape ? howToPlay02 : howToPlay02P}
-              alt="how to play 02"
-              style={{
-                maxWidth: isLandscape ? "30vw" : "80vw",
-              }}
-            />
+              <img
+                src={isLandscape ? howToPlay02 : howToPlay02P}
+                alt="how to play 02"
+                style={{
+                  maxWidth: isLandscape ? "30vw" : "50%",
+                }}
+              />
             </Box>
           </Fade>
           <Fade in={phase > 3} timeout={1000}>
-          <Box sx={{
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: isLandscape ? "column" : "row",
                 justifyContent: "space-evenly",
                 alignItems: "center",
                 gap: isLandscape ? "2vw" : "0vh",
 
-                width: !isLandscape ? "90vw" : "30vw",
-            }}>
+                width: !isLandscape ? "80vw" : "30vw",
+                marginInline: "auto",
+              }}
+            >
               <Typography
                 variant={isLandscape ? "h1" : "h3"}
                 sx={{
@@ -150,15 +161,15 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-               Match all 10 TEREA packs and earn  XX points
+                UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA
               </Typography>
-            <img
-              src={isLandscape ? howToPlay03 : howToPlay03P}
-              alt="how to play 03"
-              style={{
-                maxWidth: isLandscape ? "30vw" : "80vw",
-              }}
-            />
+              <img
+                src={isLandscape ? howToPlay03 : howToPlay03P}
+                alt="how to play 03"
+                style={{
+                  maxWidth: isLandscape ? "30vw" : "50%",
+                }}
+              />
             </Box>
           </Fade>
         </Box>{" "}
@@ -176,8 +187,15 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
               },
             }}
           >
-            <Typography variant="h6" sx={{ color: "white" }}>
-              Start
+            <Typography
+              variant="h6"
+              sx={{
+                color: "white",
+
+                // fontSize: isLandscape ? "1.2vw" : "5vw",
+              }}
+            >
+              KRENI
             </Typography>
           </Button>
         </Fade>

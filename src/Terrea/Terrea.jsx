@@ -111,8 +111,13 @@ const Terrea = ({
 
   const [direction, setDirection] = useState(1);
   const [debounceTimer, setDebounceTimer] = useState(null);
+  const [animationTimer, setAnimationTimer] = useState(null);
+
+  const [animationInProgress, setAnimationInProgress] = useState(false);
 
   const handleIncrement = () => {
+    if (animationInProgress) return;
+    setAnimationInProgress(true);
     clearTimeout(debounceTimer);
     if (index === straightPacks.length - 1) {
       setIndex(0);
@@ -127,11 +132,17 @@ const Terrea = ({
     );
     const timer = setTimeout(() => {
       check();
-    }, 1500);
+    }, 2000);
+    const timer2 = setTimeout(() => {
+      setAnimationInProgress(false);
+    }, 800);
     setDebounceTimer(timer);
+    setAnimationTimer(timer2);
   };
 
   const handleDecrement = () => {
+    if (animationInProgress) return;
+    setAnimationInProgress(true);
     clearTimeout(debounceTimer);
     if (index === 0) {
       setIndex(straightPacks.length - 1);
@@ -151,8 +162,12 @@ const Terrea = ({
     );
     const timer = setTimeout(() => {
       check();
-    }, 1500);
+    }, 2000);
+    const timer2 = setTimeout(() => {
+      setAnimationInProgress(false);
+    }, 800);
     setDebounceTimer(timer);
+    setAnimationTimer(timer2);
   };
 
   const rightRef = useRef(right);
@@ -415,7 +430,15 @@ const Terrea = ({
               fontWeight: "bold",
             }}
           >
-            <Typography sx={{ fontWeight: "bold" }}> {leftText} </Typography>
+            <Typography
+              sx={{
+                fontWeight: "bold",
+                fontSize: isLandscape ? "1vw" : "auto",
+              }}
+            >
+              {" "}
+              {leftText}{" "}
+            </Typography>
           </Box>
         </Box>
         <Box
@@ -432,7 +455,6 @@ const Terrea = ({
               sx={{
                 color: "#1BDAC1",
                 fontSize: "3vw",
-              
               }}
               // fontSize= "small"
             />
@@ -476,7 +498,13 @@ const Terrea = ({
               fontWeight: "bold",
             }}
           >
-            <Typography sx={{ color: "white", fontWeight: "bold" }}>
+            <Typography
+              sx={{
+                color: "white",
+                fontWeight: "bold",
+                fontSize: isLandscape ? "1vw" : "auto",
+              }}
+            >
               {rightText}
             </Typography>
             {/* {rightText} */}
@@ -486,7 +514,7 @@ const Terrea = ({
       <Box
         style={{
           position: "absolute",
-          top: isLandscape ? "80%" : "68%",
+          top: isLandscape ? "80%" : "58%",
           left: isLandscape ? "50%" : "70%",
           transform: isLandscape
             ? "translate(-50%, -50%)"
@@ -507,15 +535,17 @@ const Terrea = ({
             "&:hover": {
               backgroundColor: "#1BDAC199",
             },
-            height: isLandscape ? "4vw" : "20vw",
-            width: isLandscape ? "4vw" : "20vw",
+            height: isLandscape ? "4vw" : "14vw",
+            width: isLandscape ? "4vw" : "14vw",
           }}
           onPointerDown={handleIncrement}
           size="large"
         >
-          <KeyboardArrowUp sx={{
-            fontSize: isLandscape ? "3vw" : "16vw"
-          }} />
+          <KeyboardArrowUp
+            sx={{
+              fontSize: isLandscape ? "3vw" : "12vw",
+            }}
+          />
         </Fab>
         <Fab
           onPointerDown={handleDecrement}
@@ -527,15 +557,16 @@ const Terrea = ({
             },
             "&:hover": {
               backgroundColor: "#1BDAC199",
-
             },
-            height: isLandscape ? "4vw" : "20vw",
-            width: isLandscape ? "4vw" : "20vw",
+            height: isLandscape ? "4vw" : "14vw",
+            width: isLandscape ? "4vw" : "14vw",
           }}
         >
-          <KeyboardArrowDown sx={{
-            fontSize: isLandscape ? "3vw" : "16vw"
-          }} />
+          <KeyboardArrowDown
+            sx={{
+              fontSize: isLandscape ? "3vw" : "12vw",
+            }}
+          />
         </Fab>
       </Box>
       {correct > 0 && (

@@ -48,76 +48,100 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
           }}
         >
           <Fade in={phase > 0} timeout={1000} appear={false}>
-            <Box sx={{
+            <Box
+              sx={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "space-between",
                 width: "100%",
-
-            }}>
-            <Box sx={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "5vh",
-                width: "50%",
-            }}>
-              <Box>
-                <Typography
-                  variant={isLandscape ? "h1" : "h3"}
-                  sx={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: "7vw",
-                    fontWeight: "normal",
-                    fontFamily: " IQOS-Light, sans-serif",
-                  }}
-                >
-                  TEREA
-                </Typography>
-                <Typography
-                  variant={isLandscape ? "h1" : "h3"}
-                  sx={{
-                    color: "white",
-                    textAlign: "center",
-                    fontSize: "3vw",
-                    fontWeight: "400",
-                  }}
-                >
-                  GAME
-                </Typography>
-              </Box>
-              <Button
-                variant="contained"
-                onClick={handleBtn}
+              }}
+            >
+              <Box
                 sx={{
-                  backgroundColor: "rgba(51, 47, 60, 1)",
-                  mb: "10vh",
-                  padding: "10px 70px",
-                  borderRadius: "3rem",
-                  "&:hover": {
-                    backgroundColor: "rgba(51, 47, 60, 0.9)",
-                  },
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "5vh",
+                  width: "50%",
                 }}
               >
-                <Typography variant="h6" sx={{ color: "white" }}>
-                  Započni
+                <Box>
+                  <Typography
+                    variant={isLandscape ? "h1" : "h3"}
+                    sx={{
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: "7vw",
+                      fontWeight: "normal",
+                      fontFamily: " IQOS-Light, sans-serif",
+                    }}
+                  >
+                    TEREA
+                  </Typography>
+                  <Typography
+                    variant={isLandscape ? "h1" : "h3"}
+                    sx={{
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: "3vw",
+                      fontWeight: "400",
+                    }}
+                  >
+                    GAME
+                  </Typography>
+                </Box>
+                <Typography
+                  variant={"body1"}
+                  sx={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: "2vw",
+                    fontWeight: "700",
+                    //   mt: "3vh",
+                    mb: "2vh",
+                  }}
+                >
+                  UPOZNAJ TEREA DUHANSKE UMETKE
                 </Typography>
-              </Button>
-            </Box>
-            <Box
-            sx={{
-                backgroundImage: `url(${shape})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "contain",
-                // height: "100vh",
-            }}
-            >
+                <Button
+                  variant="contained"
+                  onClick={handleBtn}
+                  sx={{
+                    backgroundColor: "rgba(51, 47, 60, 1)",
+                    mb: "10vh",
+                    //   padding: "10px 70px",
+                    padding: "0.6vw 4vw",
+                    borderRadius: "3rem",
+
+                    "&:hover": {
+                      backgroundColor: "rgba(51, 47, 60, 0.9)",
+                    },
+                  }}
+                >
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      color: "white",
+                      fontSize: "1vw",
+                    }}
+                  >
+                    KRENI
+                  </Typography>
+                </Button>
+              </Box>
+              <Box
+                sx={{
+                  backgroundImage: `url(${shape})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundPosition: "center",
+                  backgroundSize: "contain",
+                  // height: "100vh",
+                }}
+              >
                 <img src={packsBig} alt="shape" style={{ height: "100vh" }} />
-            </Box>
+              </Box>
             </Box>
           </Fade>
         </Box>
@@ -135,7 +159,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
             zIndex: 100,
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-around",
+            justifyContent: "flex-start",
             alignItems: "center",
           }}
         >
@@ -146,7 +170,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  fontSize: "20vw",
+                  fontSize: "14vw",
                   fontWeight: "normal",
                   fontFamily: " IQOS-Light, sans-serif",
                 }}
@@ -158,7 +182,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  fontSize: "7vw",
+                  fontSize: "5vw",
                   fontWeight: "400",
                 }}
               >
@@ -186,23 +210,45 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
             </Box>
           </Fade>
           <Fade in={phase > 2} timeout={1000} appear={false}>
-            <Button
-              variant="contained"
-              onClick={handleBtn}
+            <Box
               sx={{
-                backgroundColor: "rgba(51, 47, 60, 1)",
-                mb: "10vh",
-                padding: "10px 70px",
-                borderRadius: "3rem",
-                "&:hover": {
-                  backgroundColor: "rgba(51, 47, 60, 0.9)",
-                },
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
               }}
             >
-              <Typography variant="h6" sx={{ color: "white" }}>
-                Započni
+              <Typography
+                variant={"body1"}
+                sx={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "4vw",
+                  fontWeight: "700",
+                  //   mt: "3vh",
+                  mb: "2vh",
+                }}
+              >
+                UPOZNAJ TEREA DUHANSKE UMETKE
               </Typography>
-            </Button>
+              <Button
+                variant="contained"
+                onClick={handleBtn}
+                sx={{
+                  backgroundColor: "rgba(51, 47, 60, 1)",
+                  mb: "10vh",
+                  padding: "10px 70px",
+                  borderRadius: "3rem",
+                  "&:hover": {
+                    backgroundColor: "rgba(51, 47, 60, 0.9)",
+                  },
+                }}
+              >
+                <Typography variant="h6" sx={{ color: "white", fontSize: "4vw" }}>
+                  KRENI
+                </Typography>
+              </Button>
+            </Box>
           </Fade>
         </Box>
       )}
