@@ -64,21 +64,23 @@ const Won = ({ isLandscape, won }) => {
           >
             Osvojili ste 200 bodova.
           </Typography>
-          <Button
-            style={{
-              fontSize: "2vh",
-              padding: "1rem 3rem",
-              borderRadius: "2.5rem",
-              marginTop: "4rem",
-              backgroundColor: "rgb(51, 47, 60)",
-              color: "white",
-              border: "none",
-              cursor: "pointer",
-              whiteSpace: "nowrap",
-            }}
-          >
-            PREUZMI BODOVE
-          </Button>
+          <a href="https://hr.pmiopen.com/s/terea-points" target="_blank">
+            <Button
+              style={{
+                fontSize: "2vh",
+                padding: "1rem 3rem",
+                borderRadius: "2.5rem",
+                marginTop: "4rem",
+                backgroundColor: "rgb(51, 47, 60)",
+                color: "white",
+                border: "none",
+                cursor: "pointer",
+                whiteSpace: "nowrap",
+              }}
+            >
+              PREUZMI BODOVE
+            </Button>
+          </a>
         </Box>
         <Box
           style={{

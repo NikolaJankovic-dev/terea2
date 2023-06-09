@@ -68,7 +68,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 }}
               >
                 <Box>
-                  <Typography
+                  {/* <Typography
                     variant={isLandscape ? "h1" : "h3"}
                     sx={{
                       color: "white",
@@ -79,8 +79,8 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                     }}
                   >
                     TEREA
-                  </Typography>
-                  <Typography
+                  </Typography> */}
+                  {/* <Typography
                     variant={isLandscape ? "h1" : "h3"}
                     sx={{
                       color: "white",
@@ -90,7 +90,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                     }}
                   >
                     GAME
-                  </Typography>
+                  </Typography> */}
                 </Box>
                 <Typography
                   variant={"body1"}
@@ -100,10 +100,25 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                     fontSize: "2vw",
                     fontWeight: "700",
                     //   mt: "3vh",
+                    fontFamily: " IQOS-Light, sans-serif",
+
                     mb: "2vh",
                   }}
                 >
-                  UPOZNAJ TEREA DUHANSKE UMETKE
+                  Upoznaj{" "}
+                  <Typography
+                    variant={isLandscape ? "h1" : "h3"}
+                    sx={{
+                      color: "white",
+                      textAlign: "center",
+                      fontSize: "4vw",
+                      fontWeight: "normal",
+                      fontFamily: " IQOS-Light, sans-serif",
+                    }}
+                  >
+                    TEREA
+                  </Typography>{" "}
+                  duhanske umetke
                 </Typography>
                 <Button
                   variant="contained"
@@ -166,6 +181,37 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
           <Fade in={phase > 0} timeout={1000} appear={false}>
             <Box>
               <Typography
+                variant={"body1"}
+                sx={{
+                  color: "white",
+                  textAlign: "center",
+                  fontSize: "4vw",
+                  fontWeight: "700",
+                  //   mt: "3vh",
+                  mb: "2vh",
+                  mt: "2vh",
+                  fontFamily: " IQOS-Light, sans-serif",
+
+                }}
+              >
+                Upoznaj
+                <Typography
+                  variant={"body1"}
+                  sx={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: "8vw",
+                    fontWeight: "700",
+                    //   mt: "3vh",
+                    // mb: "2vh",
+                    fontFamily: " IQOS-Light, sans-serif",
+                  }}
+                >
+                  TEREA
+                </Typography>
+                duhanske umetke
+              </Typography>
+              {/* <Typography
                 variant={isLandscape ? "h1" : "h3"}
                 sx={{
                   color: "white",
@@ -176,8 +222,8 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 }}
               >
                 TEREA
-              </Typography>
-              <Typography
+              </Typography> */}
+              {/* <Typography
                 variant={isLandscape ? "h1" : "h3"}
                 sx={{
                   color: "white",
@@ -187,7 +233,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 }}
               >
                 GAME
-              </Typography>
+              </Typography> */}
             </Box>
           </Fade>
           <Fade in={phase > 1} timeout={1000} appear={false}>
@@ -218,7 +264,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 alignItems: "center",
               }}
             >
-              <Typography
+              {/* <Typography
                 variant={"body1"}
                 sx={{
                   color: "white",
@@ -229,8 +275,23 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                   mb: "2vh",
                 }}
               >
-                UPOZNAJ TEREA DUHANSKE UMETKE
-              </Typography>
+                UPOZNAJ
+                <Typography
+                  variant={"body1"}
+                  sx={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: "8vw",
+                    fontWeight: "700",
+                    //   mt: "3vh",
+                    // mb: "2vh",
+                    fontFamily: " IQOS-Light, sans-serif",
+                  }}
+                >
+                  TEREA
+                </Typography>
+                DUHANSKE UMETKE
+              </Typography> */}
               <Button
                 variant="contained"
                 onClick={handleBtn}
@@ -244,7 +305,10 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                   },
                 }}
               >
-                <Typography variant="h6" sx={{ color: "white", fontSize: "4vw" }}>
+                <Typography
+                  variant="h6"
+                  sx={{ color: "white", fontSize: "4vw" }}
+                >
                   KRENI
                 </Typography>
               </Button>
