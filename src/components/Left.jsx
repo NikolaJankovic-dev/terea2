@@ -25,19 +25,22 @@ const Left = ({ left, isLandscape, setLeftImagesLoaded }) => {
   }, [isLandscape]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPosition((prevPosition) => {
-        if (left > prevPosition) {
-          return prevPosition + 1;
-        } else {
-          return prevPosition;
-        }
-      });
-    }, 100);
+    if (left === 0) setPosition(0);
+    else {
+      const interval = setInterval(() => {
+        setPosition((prevPosition) => {
+          if (left > prevPosition) {
+            return prevPosition + 1;
+          } else {
+            return prevPosition;
+          }
+        });
+      }, 100);
 
-    return () => {
-      clearInterval(interval);
-    };
+      return () => {
+        clearInterval(interval);
+      };
+    }
   }, [left]);
 
   useEffect(() => {

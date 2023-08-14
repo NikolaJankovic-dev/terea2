@@ -24,6 +24,8 @@ const Terrea = ({
   setWon,
   setLeftImagesLoaded,
   setRightImagesLoaded,
+  restart,
+  setRestart,
 }) => {
   const [right, setRight] = useState(0);
   const [left, setLeft] = useState(0);
@@ -358,6 +360,29 @@ const Terrea = ({
 
   const [touchEnd, setTouchEnd] = useState(false);
 
+  useEffect(() => {
+    if (restart) {
+      setLeft(0);
+      setRight(0);
+      setPhase(0);
+      setIndex(0);
+      setCorrect(0);
+      setIncorrect(0);
+      setTouchEnd(false);
+      setTapped(0);
+      setStartAngle(null);
+      setRotation(0);
+      setStopped(false);
+      setChecking(false);
+      setDirection(1);
+      const timer = setTimeout(() => {
+        setRestart(false);
+      }
+      , 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [restart]);
+
   return (
     <Box
       style={{
@@ -428,7 +453,12 @@ const Terrea = ({
               textShadow: "0 0 1px black",
               transition: "all 0.5s ease",
               fontWeight: "bold",
+              cursor: "pointer",
             }}
+            // onClick={() => {
+            //   setRestart(true);
+            //   console.log(left);
+            // }}
           >
             <Typography
               sx={{
@@ -437,7 +467,7 @@ const Terrea = ({
               }}
             >
               {" "}
-              {leftText}{" "}
+              {leftText} 
             </Typography>
           </Box>
         </Box>
@@ -604,6 +634,7 @@ const Terrea = ({
         tapped={tapped}
         index={index}
         direction={direction}
+        restart={restart}
       />
     </Box>
   );

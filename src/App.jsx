@@ -4,8 +4,9 @@ import Terrea from "./Terrea/Terrea";
 import HowTo from "./HowTo/HowTo";
 import Won from "./Won/Won";
 import HowToPlay from "./HowToPlay/HowToPlay";
-import { createTheme, ThemeProvider } from "@mui/material";
+import { Box, createTheme, IconButton, ThemeProvider } from "@mui/material";
 import FirstScreen from "./components/FirstScreen/FirstScreen";
+import { Fullscreen, FullscreenExit } from "@mui/icons-material";
 
 function App() {
   const [isLandscape, setIsLandscape] = useState(
@@ -15,6 +16,8 @@ function App() {
   const [won, setWon] = useState(false);
   const [leftImagesLoaded, setLeftImagesLoaded] = useState(false);
   const [rightImagesLoaded, setRightImagesLoaded] = useState(false);
+  const [restart, setRestart] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
     if (leftImagesLoaded && rightImagesLoaded) {
@@ -46,6 +49,14 @@ function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (fullScreen) {
+      document.documentElement.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+  }, [fullScreen]);
+
   const theme = createTheme({
     typography: {
       fontFamily: "IQOS-Regular, IQOS-Light, sans-serif",
@@ -56,7 +67,7 @@ function App() {
     <div
       className="App"
       style={{
-        height: window.innerHeight,
+        // height: window.innerHeight,
         overflow: "hidden",
       }}
     >
@@ -66,6 +77,8 @@ function App() {
           setWon={setWon}
           setLeftImagesLoaded={setLeftImagesLoaded}
           setRightImagesLoaded={setRightImagesLoaded}
+          restart={restart}
+          setRestart={setRestart}
         />
         <HowToPlay isLandscape={isLandscape} appPhase={appPhase} />
         <FirstScreen isLandscape={isLandscape} setAppPhase={setAppPhase} />
@@ -78,8 +91,27 @@ function App() {
           setRightImagesLoaded={setRightImagesLoaded}
         />
       )} */}
-       <Won isLandscape={isLandscape} won={won} />
+        <Won
+          isLandscape={isLandscape}
+          won={won}
+          setWon={setWon}
+          setRestart={setRestart}
+          restart={restart}
+        />
       </ThemeProvider>
+      <IconButton
+        sx={{
+          position: "fixed",
+          zIndex: 1000,
+          bottom: 10,
+          left: 10,
+        }}
+        onClick={() => {
+          setFullScreen(!fullScreen);
+        }}
+      >
+        {fullScreen ? <FullscreenExit /> : <Fullscreen />}
+      </IconButton>
     </div>
   );
 }

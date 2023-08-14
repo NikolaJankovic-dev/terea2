@@ -13,7 +13,8 @@ const Right = ({
   tapped,
   check,
   index,
-  direction
+  direction,
+  restart
 }) => {
   const [images, setImages] = useState(desna);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -38,23 +39,26 @@ const Right = ({
   const timerRef = useRef(null);
 
   useEffect(() => {
-    const target = straightPacks[index];
-    const interval = setInterval(() => {
-      setRight((prevRight) => {
-        let newRight = prevRight + direction;
-        if (newRight >= 118) {
-          newRight = 0;
-        }
-        if (newRight < 0) {
-          newRight = 117;
-        }
-        if (newRight === target) {
-          clearInterval(interval);
-        }
-        return newRight;
-      });
-    }, 50);
-    return () => clearInterval(interval);
+    if (restart) setRight(0);
+    else {
+      const target = straightPacks[index];
+      const interval = setInterval(() => {
+        setRight((prevRight) => {
+          let newRight = prevRight + direction;
+          if (newRight >= 118) {
+            newRight = 0;
+          }
+          if (newRight < 0) {
+            newRight = 117;
+          }
+          if (newRight === target) {
+            clearInterval(interval);
+          }
+          return newRight;
+        });
+      }, 50);
+      return () => clearInterval(interval);
+    }
   }, [index, direction]);
 
   useEffect(() => {

@@ -4,7 +4,7 @@ import circleBg from "../assets/images/won/shape.png";
 import { Box, Button, Fade, Typography } from "@mui/material";
 import { useDebouncedState } from "@mantine/hooks";
 
-const Won = ({ isLandscape, won }) => {
+const Won = ({ isLandscape, won, setWon, restart, setRestart }) => {
   const [phase, setPhase] = useDebouncedState(0);
   // const [scale, setScale] = useState(0)
 
@@ -15,6 +15,10 @@ const Won = ({ isLandscape, won }) => {
     if (phase === 1) {
       setPhase(2);
     }
+    if (!won && phase === 2) {
+      setPhase(0);
+    }
+    
   }, [won, setPhase]);
 
   return (
@@ -64,7 +68,7 @@ const Won = ({ isLandscape, won }) => {
           >
             Osvojili ste 200 bodova.
           </Typography>
-          <a href="https://hr.pmiopen.com/s/terea-points" target="_blank">
+          {/* <a href="https://hr.pmiopen.com/s/terea-points" target="_blank"> */}
             <Button
               style={{
                 fontSize: "2vh",
@@ -77,10 +81,14 @@ const Won = ({ isLandscape, won }) => {
                 cursor: "pointer",
                 whiteSpace: "nowrap",
               }}
+              onClick={() => {
+                setWon(false);
+                setRestart(true);
+              }}
             >
               PREUZMI BODOVE
             </Button>
-          </a>
+          {/* </a> */}
         </Box>
         <Box
           style={{
