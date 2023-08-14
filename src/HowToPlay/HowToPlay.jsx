@@ -57,7 +57,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
             fontSize: isLandscape ? "4vw" : "8vw",
           }}
         >
-          UPUTE:
+          Upute:
         </Typography>
         <Box
           sx={{
@@ -93,7 +93,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                UPARI TEREA I HEETS OKUSE
+                Upari terea i heets okuse
               </Typography>
               <img
                 src={isLandscape ? howToPlay01 : howToPlay01P}
@@ -127,7 +127,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                ODABERI TEREA KUTIJICU KORIŠTENJEM STRELICA
+                Odaberi terea kutijicu koristenjem strelica
               </Typography>
               <img
                 src={isLandscape ? howToPlay02 : howToPlay02P}
@@ -161,7 +161,8 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA
+                {/* UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA */}
+                Upari svih 10 terea okusa i osvoji 200 bodova
               </Typography>
               <img
                 src={isLandscape ? howToPlay03 : howToPlay03P}

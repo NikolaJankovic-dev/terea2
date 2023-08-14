@@ -142,7 +142,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                       fontSize: "1vw",
                     }}
                   >
-                    KRENI
+                    Kreni
                   </Typography>
                 </Button>
               </Box>
@@ -309,7 +309,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                   variant="h6"
                   sx={{ color: "white", fontSize: "4vw" }}
                 >
-                  KRENI
+                  Kreni
                 </Typography>
               </Button>
             </Box>

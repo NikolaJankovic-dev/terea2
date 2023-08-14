@@ -371,7 +371,7 @@ const Terrea = ({
         backgroundPosition: "right top",
       }}
     >
-      <img
+      {/* <img
         src={sound ? on : off}
         style={{
           position: "absolute",
@@ -386,7 +386,7 @@ const Terrea = ({
         }}
         alt="sound"
         onPointerDown={() => setSound(!sound)}
-      />
+      /> */}
       <Box
         style={{
           position: "absolute",
