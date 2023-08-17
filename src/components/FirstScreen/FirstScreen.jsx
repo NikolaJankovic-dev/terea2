@@ -105,7 +105,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                     mb: "2vh",
                   }}
                 >
-                  Upoznaj{" "}
+                  Spoznajte{" "}
                   <Typography
                     variant={isLandscape ? "h1" : "h3"}
                     sx={{
@@ -118,7 +118,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                   >
                     TEREA
                   </Typography>{" "}
-                  duhanske umetke
+                  paličice s tobakom za segrevanje
                 </Typography>
                 <Button
                   variant="contained"
@@ -142,7 +142,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                       fontSize: "1vw",
                     }}
                   >
-                    Kreni
+                    ZAČNITE
                   </Typography>
                 </Button>
               </Box>
@@ -194,7 +194,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
 
                 }}
               >
-                Upoznaj
+                Spoznajte
                 <Typography
                   variant={"body1"}
                   sx={{
@@ -209,7 +209,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 >
                   TEREA
                 </Typography>
-                duhanske umetke
+                paličice <br/> s tobakom za segrevanje
               </Typography>
               {/* <Typography
                 variant={isLandscape ? "h1" : "h3"}

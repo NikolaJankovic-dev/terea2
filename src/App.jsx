@@ -99,19 +99,19 @@ function App() {
           restart={restart}
         />
       </ThemeProvider>
-      <IconButton
+      {/* <IconButton
         sx={{
           position: "fixed",
           zIndex: 1000,
           bottom: 10,
-          left: 10,
+          right: 10,
         }}
         onClick={() => {
           setFullScreen(!fullScreen);
         }}
       >
         {fullScreen ? <FullscreenExit /> : <Fullscreen />}
-      </IconButton>
+      </IconButton> */}
     </div>
   );
 }

@@ -66,9 +66,9 @@ const Won = ({ isLandscape, won, setWon, restart, setRestart }) => {
               whiteSpace: "nowrap",
             }}
           >
-            Osvojili ste 200 bodova.
+            Osvojili ste 200 točk.
           </Typography>
-          {/* <a href="https://hr.pmiopen.com/s/terea-points" target="_blank"> */}
+          <a href="https://hr.pmiopen.com/s/terea-points" target="_top"> 
             <Button
               style={{
                 fontSize: "2vh",
@@ -81,14 +81,14 @@ const Won = ({ isLandscape, won, setWon, restart, setRestart }) => {
                 cursor: "pointer",
                 whiteSpace: "nowrap",
               }}
-              onClick={() => {
-                setWon(false);
-                setRestart(true);
-              }}
+              // onClick={() => {
+              //   setWon(false);
+              //   setRestart(true);
+              // }}
             >
-              PREUZMI BODOVE
+              PREVZEMITE TOČKE
             </Button>
-          {/* </a> */}
+           </a> 
         </Box>
         <Box
           style={{

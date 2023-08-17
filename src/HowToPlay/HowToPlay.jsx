@@ -1,8 +1,8 @@
 import { Box, Button, Fade, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useDebouncedState } from "@mantine/hooks";
-import howToPlay01 from "../assets/images/howtoplay/01.png";
-import howToPlay02 from "../assets/images/howtoplay/02.png";
+import howToPlay01 from "../assets/images/howtoplay/slo/01.png";
+import howToPlay02 from "../assets/images/howtoplay/slo/02.png";
 import howToPlay03 from "../assets/images/howtoplay/03.png";
 import howToPlay01P from "../assets/images/howtoplay/01P.png";
 import howToPlay02P from "../assets/images/howtoplay/02P.png";
@@ -57,7 +57,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
             fontSize: isLandscape ? "4vw" : "8vw",
           }}
         >
-          Upute:
+          Navodila:
         </Typography>
         <Box
           sx={{
@@ -93,7 +93,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                Upari terea i heets okuse
+                Povežite TEREA in HEETS različice.
               </Typography>
               <img
                 src={isLandscape ? howToPlay01 : howToPlay01P}
@@ -127,7 +127,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                Odaberi terea kutijicu koristenjem strelica
+                S puščicami izberite ustrezno TEREA različico.
               </Typography>
               <img
                 src={isLandscape ? howToPlay02 : howToPlay02P}
@@ -162,7 +162,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                 }}
               >
                 {/* UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA */}
-                Upari svih 10 terea okusa i osvoji 200 bodova
+                Povežite vseh 10 TEREA <br/> različic in osvojite 200 točk.
               </Typography>
               <img
                 src={isLandscape ? howToPlay03 : howToPlay03P}
@@ -196,7 +196,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                 // fontSize: isLandscape ? "1.2vw" : "5vw",
               }}
             >
-              KRENI
+              ZAČNITE
             </Typography>
           </Button>
         </Fade>
