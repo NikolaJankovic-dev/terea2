@@ -19,7 +19,7 @@ const Right = ({
   const [images, setImages] = useState(desna);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const straightPacks = [0, 9, 22, 34, 47, 57, 69, 83, 97, 109];
+  const straightPacks = [0, 11, 22, 34, 47, 58, 70, 83, 97, 109];
 
   function findClosestNumber(arr, num) {
     let closest = arr[0];
