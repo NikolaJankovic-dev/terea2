@@ -68,7 +68,8 @@ const Won = ({ isLandscape, won, setWon, restart, setRestart }) => {
           >
             Osvojili ste 200 točk.
           </Typography>
-          <a href="https://hr.pmiopen.com/s/terea-points" target="_top"> 
+          {/* <a href="https://hr.pmiopen.com/s/terea-points" target="_top"> */}
+          <a href="https://www.pmiopen.si/s/terea-points" target="_top">
             <Button
               style={{
                 fontSize: "2vh",
