@@ -93,7 +93,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                Povežite TEREA in HEETS različice.
+                Povežite TEREA{!isLandscape && <br />} in HEETS različice.
               </Typography>
               <img
                 src={isLandscape ? howToPlay01 : howToPlay01P}
@@ -127,7 +127,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                S puščicami izberite ustrezno TEREA različico.
+                S puščicami{!isLandscape && <br />} izberite{isLandscape && <br />} ustrezno{!isLandscape && <br />} TEREA različico.
               </Typography>
               <img
                 src={isLandscape ? howToPlay02 : howToPlay02P}
@@ -163,7 +163,8 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
               >
                 {/* UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA */}
                 {/* Povežite vseh 10 TEREA <br/> različic in osvojite 200 točk. */}
-                Povežite vseh 10 TEREA <br/> različic in osvojite 150 točk.
+                Povežite vseh 10 TEREA <br /> različic in osvojite{" "}
+                {!isLandscape && <br />} 150 točk.
               </Typography>
               <img
                 src={isLandscape ? howToPlay03 : howToPlay03P}
