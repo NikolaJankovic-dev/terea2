@@ -42,7 +42,7 @@ const Terrea = ({
   const names = [
     "RUSSET",
     "BRONZE",
-    "SIENA",
+    "SIENNA",
     "TEAK",
     "AMBER ",
     "YELLOW",
@@ -74,7 +74,7 @@ const Terrea = ({
     "YELLOW",
     "TURQUOISE",
     "RUSSET",
-    "SIENA",
+    "SIENNA",
     "SILVER",
     "MAUVE",
     "BRONZE",
