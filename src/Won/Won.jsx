@@ -66,7 +66,8 @@ const Won = ({ isLandscape, won, setWon, restart, setRestart }) => {
               whiteSpace: "nowrap",
             }}
           >
-            Osvojili ste 200 točk.
+            {/* Osvojili ste 200 točk. */}
+            Osvojili ste 150 točk.
           </Typography>
           {/* <a href="https://hr.pmiopen.com/s/terea-points" target="_top"> */}
           <a href="https://www.pmiopen.si/s/terea-points" target="_top">

@@ -162,7 +162,8 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                 }}
               >
                 {/* UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA */}
-                Povežite vseh 10 TEREA <br/> različic in osvojite 200 točk.
+                {/* Povežite vseh 10 TEREA <br/> različic in osvojite 200 točk. */}
+                Povežite vseh 10 TEREA <br/> različic in osvojite 150 točk.
               </Typography>
               <img
                 src={isLandscape ? howToPlay03 : howToPlay03P}
