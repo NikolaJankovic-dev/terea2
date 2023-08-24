@@ -70,40 +70,43 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
             // mt: "10vh",
           }}
         >
-          <Fade in={phase > 1} timeout={1000}>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: isLandscape ? "column" : "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                // gap: "5vh",
-                gap: isLandscape ? "2vw" : "0vh",
-                width: !isLandscape ? "80vw" : "30vw",
-                marginInline: "auto",
-              }}
-            >
-              <Typography
-                variant={isLandscape ? "h1" : "h3"}
+          {!isLandscape && (
+            <Fade in={phase > 1} timeout={1000}>
+              <Box
                 sx={{
-                  color: "white",
-                  textAlign: "center",
-                  fontSize: isLandscape ? "1.9vw" : "4vw",
-                  fontWeight: "normal",
-                  fontFamily: " IQOS-Regular, sans-serif",
+                  display: "flex",
+                  flexDirection: isLandscape ? "column" : "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  // gap: "5vh",
+                  gap: isLandscape ? "2vw" : "0vh",
+                  width: !isLandscape ? "80vw" : "30vw",
+                  marginInline: "auto",
                 }}
               >
-                Povežite TEREA{!isLandscape && <br />} in HEETS različice.
-              </Typography>
-              <img
-                src={isLandscape ? howToPlay01 : howToPlay01P}
-                alt="how to play 01"
-                style={{
-                  maxWidth: isLandscape ? "30vw" : "50%",
-                }}
-              />
-            </Box>
-          </Fade>
+                <Typography
+                  variant={isLandscape ? "h1" : "h3"}
+                  sx={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: isLandscape ? "1.5vw" : "4vw",
+                    fontWeight: "normal",
+                    fontFamily: " IQOS-Regular, sans-serif",
+                  }}
+                >
+                  Povežite TEREA{!isLandscape && <br />} in HEETS različice.
+                </Typography>
+                <img
+                  src={isLandscape ? howToPlay01 : howToPlay01P}
+                  alt="how to play 01"
+                  style={{
+                    maxWidth: isLandscape ? "30vw" : "50%",
+                  }}
+                />
+              </Box>
+            </Fade>
+          )}
+
           <Fade in={phase > 2} timeout={1000}>
             <Box
               sx={{
@@ -122,12 +125,14 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  fontSize: isLandscape ? "1.9vw" : "4vw",
+                  fontSize: isLandscape ? "1.5vw" : "4vw",
                   fontWeight: "normal",
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
-                S puščicami{!isLandscape && <br />} izberite{isLandscape && <br />} ustrezno{!isLandscape && <br />} TEREA različico.
+                {!isLandscape
+                  ? `S puščicami izberite ustrezno TEREA različico.`
+                  : "Povežite TEREA in HEETS različice."}
               </Typography>
               <img
                 src={isLandscape ? howToPlay02 : howToPlay02P}
@@ -138,6 +143,46 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
               />
             </Box>
           </Fade>
+
+          {isLandscape && (
+            <Fade in={phase > 1} timeout={1000}>
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: isLandscape ? "column" : "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  // gap: "5vh",
+                  gap: isLandscape ? "2vw" : "0vh",
+                  width: !isLandscape ? "80vw" : "30vw",
+                  marginInline: "auto",
+                }}
+              >
+                <Typography
+                  variant={isLandscape ? "h1" : "h3"}
+                  sx={{
+                    color: "white",
+                    textAlign: "center",
+                    fontSize: isLandscape ? "1.5vw" : "4vw",
+                    fontWeight: "normal",
+                    fontFamily: " IQOS-Regular, sans-serif",
+                  }}
+                >
+                  S puščicami{!isLandscape && <br />} izberite
+                  {isLandscape && <br />} ustrezno{!isLandscape && <br />} TEREA
+                  različico.
+                </Typography>
+                <img
+                  src={isLandscape ? howToPlay01 : howToPlay01P}
+                  alt="how to play 01"
+                  style={{
+                    maxWidth: isLandscape ? "30vw" : "50%",
+                  }}
+                />
+              </Box>
+            </Fade>
+          )}
+
           <Fade in={phase > 3} timeout={1000}>
             <Box
               sx={{
@@ -156,15 +201,14 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
                 sx={{
                   color: "white",
                   textAlign: "center",
-                  fontSize: isLandscape ? "1.9vw" : "4vw",
+                  fontSize: isLandscape ? "1.5vw" : "4vw",
                   fontWeight: "normal",
                   fontFamily: " IQOS-Regular, sans-serif",
                 }}
               >
                 {/* UPARI SVIH 10 TEREA OKUSA I OSVOJI 200 BODOVA */}
                 {/* Povežite vseh 10 TEREA <br/> različic in osvojite 200 točk. */}
-                Povežite vseh 10 TEREA <br /> različic in osvojite{" "}
-                {!isLandscape && <br />} 150 točk.
+                Povežite vseh 10 TEREA različic s{!isLandscape && <br />}{" "} HEETS različicami{!isLandscape && <br />}{" "} in osvojite {!isLandscape && <br />}{" "} 150 točk.
               </Typography>
               <img
                 src={isLandscape ? howToPlay03 : howToPlay03P}
