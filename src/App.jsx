@@ -6,7 +6,7 @@ import Won from "./Won/Won";
 import HowToPlay from "./HowToPlay/HowToPlay";
 import { Box, createTheme, IconButton, ThemeProvider } from "@mui/material";
 import FirstScreen from "./components/FirstScreen/FirstScreen";
-import { Fullscreen, FullscreenExit } from "@mui/icons-material";
+// import { Fullscreen, FullscreenExit } from "@mui/icons-material";
 
 function App() {
   const [isLandscape, setIsLandscape] = useState(
@@ -17,7 +17,7 @@ function App() {
   const [leftImagesLoaded, setLeftImagesLoaded] = useState(false);
   const [rightImagesLoaded, setRightImagesLoaded] = useState(false);
   const [restart, setRestart] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
+  // const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
     if (leftImagesLoaded && rightImagesLoaded) {
@@ -49,13 +49,13 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    if (fullScreen) {
-      document.documentElement.requestFullscreen();
-    } else {
-      document.exitFullscreen();
-    }
-  }, [fullScreen]);
+  // useEffect(() => {
+  //   if (fullScreen) {
+  //     document.documentElement.requestFullscreen();
+  //   } else {
+  //     document.exitFullscreen();
+  //   }
+  // }, [fullScreen]);
 
   const theme = createTheme({
     typography: {
