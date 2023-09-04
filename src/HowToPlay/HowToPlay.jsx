@@ -45,7 +45,8 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
           zIndex: 100,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-evenly",
+          justifyContent: "center",
+          gap: "10vh",
           alignItems: "center",
         }}
       >
@@ -62,10 +63,10 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "space-evenly",
+            justifyContent: "space-between",
             flexDirection: isLandscape ? "row" : "column",
             alignItems: "space-between",
-            gap: "20px",
+            gap: "5vh",
             width: "100vw",
             // mt: "10vh",
           }}
@@ -194,6 +195,7 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
 
                 width: !isLandscape ? "80vw" : "30vw",
                 marginInline: "auto",
+                // mb: "20vh",
               }}
             >
               <Typography
@@ -226,7 +228,9 @@ const HowToPlay = ({ isLandscape, appPhase }) => {
             onClick={() => setPhase(6)}
             sx={{
               backgroundColor: "rgba(51, 47, 60, 1)",
-              mb: "10vh",
+              mb: "5vh",
+              position: "fixed",
+              bottom: "0vh",
               padding: "10px 70px",
               borderRadius: "3rem",
               "&:hover": {

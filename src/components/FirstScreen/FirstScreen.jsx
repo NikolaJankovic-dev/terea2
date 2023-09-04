@@ -188,10 +188,9 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                   fontSize: "4vw",
                   fontWeight: "700",
                   //   mt: "3vh",
-                  mb: "2vh",
+                  mb: "0vh",
                   mt: "2vh",
                   fontFamily: " IQOS-Light, sans-serif",
-
                 }}
               >
                 Spoznajte
@@ -209,7 +208,7 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 >
                   TEREA
                 </Typography>
-                paličice <br/> s tobakom za segrevanje
+                paličice <br /> s tobakom za segrevanje
               </Typography>
               {/* <Typography
                 variant={isLandscape ? "h1" : "h3"}
@@ -297,9 +296,11 @@ const FirstScreen = ({ isLandscape, setAppPhase }) => {
                 onClick={handleBtn}
                 sx={{
                   backgroundColor: "rgba(51, 47, 60, 1)",
-                  mb: "10vh",
+                  mb: "5vh",
                   padding: "10px 70px",
                   borderRadius: "3rem",
+                  position: "fixed",
+                  bottom: "0vh",
                   "&:hover": {
                     backgroundColor: "rgba(51, 47, 60, 0.9)",
                   },
